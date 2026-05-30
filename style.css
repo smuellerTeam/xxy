@@ -300,9 +300,6 @@ body::after {
 
 .interactive-unicorn {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 10rem;
   height: 10rem;
   padding: 0;
@@ -311,18 +308,50 @@ body::after {
   cursor: pointer;
   transform-origin: center bottom;
   z-index: 1;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(15, 9, 42, 0.35);
 }
 
-.interactive-unicorn img {
+.interactive-unicorn:focus-visible {
+  outline: 3px solid rgba(149, 116, 255, 0.72);
+}
+
+.interactive-unicorn canvas {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  border-radius: 2rem;
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
 }
 
 .overview-unicorn {
-  animation: overview-unicorn-sequence 6.5s ease-in-out infinite;
+  animation: overview-unicorn-pulse 4s ease-in-out infinite;
+}
+
+@keyframes overview-unicorn-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+.welcome-unicorn {
+  position: absolute;
+  right: 3rem;
+  bottom: 2.5rem;
+  width: min(28rem, 38vw);
+  max-width: 32rem;
+  aspect-ratio: 1.3 / 1;
+  z-index: 1;
+}
+
+@media (max-width: 760px) {
+  .welcome-unicorn {
+    width: min(26rem, 80vw);
+    right: 1rem;
+    bottom: 1.5rem;
+  }
 }
 
 .overview-unicorn.reverse img {
