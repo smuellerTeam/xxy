@@ -236,9 +236,9 @@ body::after {
                     linear-gradient(140deg, rgba(97, 32, 148, 0.94), rgba(25, 11, 66, 0.84));
 }
 
-.unicorn {
-  background-image: radial-gradient(circle at 80% 20%, rgba(117, 235, 224, 0.15), transparent 22%),
-                    linear-gradient(140deg, rgba(40, 51, 161, 0.93), rgba(19, 10, 53, 0.85));
+.forest {
+  background-image: radial-gradient(circle at 80% 20%, rgba(102, 216, 172, 0.15), transparent 22%),
+                    linear-gradient(140deg, rgba(26, 53, 77, 0.93), rgba(12, 8, 34, 0.85));
 }
 
 @media (min-width: 760px) {
@@ -298,131 +298,24 @@ body::after {
   z-index: 1;
 }
 
-.interactive-unicorn {
-  position: relative;
-  width: 10rem;
-  height: 10rem;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  transform-origin: center bottom;
-  z-index: 1;
-  border-radius: 2rem;
-  overflow: hidden;
-  box-shadow: 0 18px 42px rgba(15, 9, 42, 0.35);
+.bunker-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: #000;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  box-shadow: 0 0 0 0.18rem rgba(255, 255, 255, 0.1);
+  z-index: 50;
 }
 
-.interactive-unicorn:focus-visible {
-  outline: 3px solid rgba(149, 116, 255, 0.72);
-}
-
-.interactive-unicorn canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.overview-unicorn {
-  animation: overview-unicorn-pulse 4s ease-in-out infinite;
-}
-
-@keyframes overview-unicorn-pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.04);
-  }
-}
-
-.welcome-unicorn {
-  position: absolute;
-  right: 3rem;
-  bottom: 2.5rem;
-  width: min(28rem, 38vw);
-  max-width: 32rem;
-  aspect-ratio: 1.3 / 1;
-  z-index: 1;
-}
-
-@media (max-width: 760px) {
-  .welcome-unicorn {
-    width: min(26rem, 80vw);
-    right: 1rem;
-    bottom: 1.5rem;
-  }
-}
-
-.overview-unicorn.reverse img {
-  transform: scaleX(-1);
-}
-
-@keyframes overview-unicorn-sequence {
-  0%, 10% {
-    transform: translateY(0) rotate(0deg);
-  }
-  15%, 25% {
-    transform: translateY(-0.4rem) rotate(1.2deg);
-  }
-  30%, 40% {
-    transform: translateY(-0.2rem) rotate(-1.2deg);
-  }
-  45% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50%, 55% {
-    transform: translateX(-0.2rem) rotate(-1deg);
-  }
-  60%, 65% {
-    transform: translateX(0.2rem) rotate(1deg);
-  }
-  70% {
-    transform: translateY(-1rem) rotate(-10deg);
-  }
-  80% {
-    transform: translateY(-1.4rem) rotate(-16deg);
-  }
-  90% {
-    transform: translateY(-0.6rem) rotate(-6deg);
-  }
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-}
-
-.welcome-unicorn {
-  position: absolute;
-  right: 3rem;
-  bottom: 2.5rem;
-  width: min(28rem, 38vw);
-  max-width: 32rem;
-  aspect-ratio: 1.3 / 1;
-  animation: welcome-gallop 4.5s ease-in-out infinite alternate;
-}
-
-.welcome-unicorn img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 2rem;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.4), 0 0 25px rgba(255, 255, 255, 0.1);
-}
-
-.welcome-unicorn.reverse img {
-  transform: scaleX(-1);
-}
-
-@keyframes welcome-gallop {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-1.2rem, -0.8rem) scale(1.02);
-  }
-  100% {
-    transform: translate(0.8rem, -0.3rem) scale(1);
-  }
+.bunker-button:hover,
+.bunker-button:focus-visible {
+  box-shadow: 0 0 0 0.22rem rgba(255, 255, 255, 0.18);
 }
 
 .welcome {
@@ -436,6 +329,56 @@ body::after {
   padding: 3rem 1.25rem;
   position: relative;
   filter: brightness(1.12);
+}
+
+/* Book viewer styles */
+.book {
+  max-width: 980px;
+  margin: 3.5rem auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.book-spread {
+  width: 720px;
+  height: 980px;
+  background: linear-gradient(180deg,#0a1418 0%, #071116 100%);
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(2,5,10,0.7);
+  overflow: hidden;
+  display: flex;
+}
+
+.page {
+  flex: 1 1 50%;
+  padding: 28px;
+  background: linear-gradient(180deg,#fbf6ef 0%, #f0e9db 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page svg { width: 100%; height: 100%; display: block }
+
+.book-nav {
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: #fff;
+  font-size: 2.2rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.book-back { position: fixed; top: 1rem; left: 3.2rem; color: var(--text-light); z-index: 60 }
+
+@media (max-width: 900px) {
+  .book { margin: 2rem 1rem }
+  .book-spread { width: 100%; height: 640px }
+  .page { padding: 12px }
 }
 
 .welcome h1 {
